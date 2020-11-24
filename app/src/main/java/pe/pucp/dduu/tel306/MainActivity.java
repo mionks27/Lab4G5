@@ -16,7 +16,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void agregarLoginFragment(View view){
-        LoginFragment loginFragment = LoginFragment.newInstance
+        LoginFragment loginFragment = LoginFragment.newInstance();
         FragmentManager supportFragmentManager = getSupportFragmentManager();
 
         FragmentTransaction fragmentTransaction = supportFragmentManager.beginTransaction();
