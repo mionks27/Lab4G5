@@ -1,6 +1,9 @@
 package pe.pucp.dduu.tel306.Entity;
 
+import com.google.gson.annotations.SerializedName;
+
 public class Preguntas {
+    @SerializedName(value = "id")
     private int id;
     private String questionText;
     private String questionDate;
