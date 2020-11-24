@@ -1,6 +1,7 @@
 package pe.pucp.dduu.tel306.Entity;
 
 import android.content.Context;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,6 +34,15 @@ public class ListaRespuestasAdapter extends RecyclerView.Adapter<ListaRespuestas
         Preguntas preguntas =listaPreguntas[position];
         String data = preguntas.getQuestionText();
         holder.button.setText(data);
+        holder.button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Bundle result = new Bundle();
+                result.putInt("id", preguntas.getId());
+//                getParentFragmentManager().setFragmentResult("requestKey", result);
+            }
+        });
+
     }
 
     @Override
