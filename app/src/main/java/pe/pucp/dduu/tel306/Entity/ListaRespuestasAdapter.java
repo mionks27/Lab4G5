@@ -1,6 +1,7 @@
 package pe.pucp.dduu.tel306.Entity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,7 +9,11 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
+
+import pe.pucp.dduu.tel306.DetallesActivity;
+import pe.pucp.dduu.tel306.QuestionsActivity;
 import pe.pucp.dduu.tel306.R;
 
 public class ListaRespuestasAdapter extends RecyclerView.Adapter<ListaRespuestasAdapter.PreguntasViewHolder> {
@@ -37,7 +42,9 @@ public class ListaRespuestasAdapter extends RecyclerView.Adapter<ListaRespuestas
         holder.button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent = new Intent(context, DetallesActivity.class);
+                intent.putExtra("id",preguntas.getId());
+                context.startActivity(intent);
             }
         });
 

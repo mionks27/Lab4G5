@@ -15,13 +15,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Lab4GX"
         android:usesCleartextTraffic="true">
-        <activity android:name=".QuestionsActivity"></activity>
-        <activity android:name=".MainActivity">
+        <activity android:name=".DetallesActivity" />
+        <activity android:name=".QuestionsActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".MainActivity">
         </activity>
     </application>
 
