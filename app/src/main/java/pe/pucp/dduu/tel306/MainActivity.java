@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -24,13 +25,16 @@ import org.json.JSONObject;
 
 import java.io.UnsupportedEncodingException;
 
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         View loginFragment = findViewById(R.id.principalFragmentContainer);
 
         /*
@@ -53,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
         */
     }
     //CON ESTO SE MUESTRA EL FRAGMENT DE LOGIN
-    public void agregarLoginFragment(View view){
+    public void agregarLoginFragment(){
         LoginFragment loginFragment = LoginFragment.newInstance();
         FragmentManager supportFragmentManager = getSupportFragmentManager();
 
@@ -64,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
     }
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //CON ESTO SE MUESTRA EL FRAGMENT DE REGISTRO
-    public void agregarRegisterFragment(View view){
+    public void agregarRegisterFragment(){
         RegisterFragment registerFragment = RegisterFragment.newInstance();
         FragmentManager supportFragmentManager = getSupportFragmentManager();
 
@@ -72,6 +76,11 @@ public class MainActivity extends AppCompatActivity {
         fragmentTransaction.add(R.id.principalFragmentContainer,registerFragment);
         //fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
+        ///////////////////////////////
+
+
+
+
     }
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //JSON
