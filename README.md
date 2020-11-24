@@ -1,44 +1,45 @@
-# Título del Proyecto
+# Lab4G5
 
-_Acá va un párrafo que describa lo que es el proyecto_
+_This is a project developed in Desarrollo de Aplicaciones Móviles's course from the Pontificial Catholic University of Peru._
 
-## Comenzando 🚀
+## Getting started 🚀
 
-_Estas instrucciones te permitirán obtener una copia del proyecto en funcionamiento en tu máquina local para propósitos de desarrollo y pruebas._
-
-Mira **Deployment** para conocer como desplegar el proyecto.
+_Have in mid that this project is able to run into an Android device that has 22 SDK API or higher._
 
 
-### Pre-requisitos 📋
 
-_Que cosas necesitas para instalar el software y como instalarlas_
 
-```
-Da un ejemplo
-```
+### Pre requirements 📋
 
-### Instalación 🔧
-
-_Una serie de ejemplos paso a paso que te dice lo que debes ejecutar para tener un entorno de desarrollo ejecutandose_
-
-_Dí cómo será ese paso_
+_You can try this project by cloning it from github on Android Studio (version 4.1.1) in order to be emulated on your phone or a virtual one. _
 
 ```
-Da un ejemplo
+$ git clone https://github.com/mionks27/Lab4G5.git
 ```
 
-_Y repite_
+### Installation 🔧
+
+_By following these steps, after cloning the project from github on your computer, you can try by your own the capabilities of the project._
+
+_Make sure Gradle is synchronized on your local project:
 
 ```
-hasta finalizar
+On the right, right click on "Gradle" and a window will appear. Right Click on the project name and click on "Reload Gradle Project".
 ```
 
-_Finaliza con un ejemplo de cómo obtener datos del sistema o como usarlos para una pequeña demo_
+_Then, what is next is to connect your android device on developer mode (in case you want to try it in a virtual device, you must install it).
 
-## Ejecutando las pruebas ⚙️
 
-_Explica como ejecutar las pruebas automatizadas para este sistema_
+```
+If your device has the right configuration, Android Studio will recognize it.
+```
 
+_Finally, just click on the green play button and it will be automatically opened on your device._
+
+## What you should know  ⚙️
+
+_This project has been motivated due to the recent politics stuff. The government wants to receive people opinion, so in this application you can send your opinion about many topics after registering/loging. _
+_ You can easily register, we use some APIs to get and put information that will be required in the program, so make sure you have internet connection. _
 ### Analice las pruebas end-to-end 🔩
 
 _Explica que verifican estas pruebas y por qué_
