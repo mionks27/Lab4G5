@@ -39,7 +39,7 @@ _Finally, just click on the green play button and it will be automatically opene
 ## What you should know  ⚙️
 
 _This project has been motivated due to the recent politics stuff. The government wants to receive people opinion, so in this application you can send your opinion about many topics after registering/loging. _
-_ You can easily register, we use some APIs to get and put information that will be required in the program, so make sure you have internet connection. _
+You can easily register, we use some APIs to get and put information that will be required in the program, so make sure you have internet connection. _
 ### Analice las pruebas end-to-end 🔩
 
 _Explica que verifican estas pruebas y por qué_
