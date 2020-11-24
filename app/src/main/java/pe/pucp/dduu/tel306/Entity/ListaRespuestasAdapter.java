@@ -37,9 +37,7 @@ public class ListaRespuestasAdapter extends RecyclerView.Adapter<ListaRespuestas
         holder.button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Bundle result = new Bundle();
-                result.putInt("id", preguntas.getId());
-//                getParentFragmentManager().setFragmentResult("requestKey", result);
+
             }
         });
 
