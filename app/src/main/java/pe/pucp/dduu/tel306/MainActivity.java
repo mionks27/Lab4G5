@@ -20,20 +20,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         //VALIDANDO SI HAY O NO UN ARCHIVO .JSON con datos de usuario en memoria local
-        try (FileInputStream fileInputStream = openFileInput("archivoAleerConObjetos.json");
-             ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream)) {
-            if (fileInputStream.available() > 0) {  //es decir, si es que hay bytes para leer...
-                ///mandar a question activity
-                Intent intent = new Intent(MainActivity.this,QuestionsActivity.class);
-                startActivity(intent);
-            }else{ ///cuando no existe el archivo JSON
-                ///abrir login
-                agregarLoginFragment();
-            }
 
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
 
     }
 
