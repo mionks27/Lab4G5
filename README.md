@@ -38,64 +38,39 @@ _Finally, just click on the green play button and it will be automatically opene
 
 ## What you should know  ⚙️
 
-_This project has been motivated due to the recent politics stuff. The government wants to receive people opinion, so in this application you can send your opinion about many topics after registering/loging. _
+_This project has been motivated due to the recent politics stuff. The government wants to receive people opinion, so in this application you can send your opinion about many topics after registering/loging.
 You can easily register, we use some APIs to get and put information that will be required in the program, so make sure you have internet connection. _
-### Analice las pruebas end-to-end 🔩
 
-_Explica que verifican estas pruebas y por qué_
+### What we think can be improved🔩
 
-```
-Da un ejemplo
-```
+* Many APIs can be included in the project in order to validate information about new users.
+* Some new designs can be developed, may be an special Material Design could be used.
 
-### Y las pruebas de estilo de codificación ⌨️
+### Notice us ⌨️
 
-_Explica que verifican estas pruebas y por qué_
+_If you find some bugs or security mistakes, please notify us by sending an e-mail to a20201010@pucp.edu.pe_
 
-```
-Da un ejemplo
-```
 
-## Despliegue 📦
+## Build with 🛠️
 
-_Agrega notas adicionales sobre como hacer deploy_
+_Here are some of the fundamentals used in this project_
 
-## Construido con 🛠️
+* APIs
+* Fragments
+* Material Design
+* Worker Threads
+* Storage on Android
+* Internet Connection
 
-_Menciona las herramientas que utilizaste para crear tu proyecto_
+## Version 📌
 
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - El framework web usado
-* [Maven](https://maven.apache.org/) - Manejador de dependencias
-* [ROME](https://rometools.github.io/rome/) - Usado para generar RSS
+The latest version (1.0) was released on November 24th.
 
-## Contribuyendo 🖇️
+## Authors ✒️
 
-Por favor lee el [CONTRIBUTING.md](https://gist.github.com/villanuevand/xxxxxx) para detalles de nuestro código de conducta, y el proceso para enviarnos pull requests.
 
-## Wiki 📖
 
-Puedes encontrar mucho más de cómo utilizar este proyecto en nuestra [Wiki](https://github.com/tu/proyecto/wiki)
+* **Royer Yangali** - *Leader* - [github: royeryangali]
+* **Julio Carrión** - *Developer* - [github: mionks27]
+* **Fernando Guzmán** - *Developer* - [github: smiledog97]
 
-## Versionado 📌
-
-Usamos [SemVer](http://semver.org/) para el versionado. Para todas las versiones disponibles, mira los [tags en este repositorio](https://github.com/tu/proyecto/tags).
-
-## Autores ✒️
-
-_Menciona a todos aquellos que ayudaron a levantar el proyecto desde sus inicios_
-
-* **Andrés Villanueva** - *Trabajo Inicial* - [villanuevand](https://github.com/villanuevand)
-* **Fulanito Detal** - *Documentación* - [fulanitodetal](#fulanito-de-tal)
-
-También puedes mirar la lista de todos los [contribuyentes](https://github.com/your/project/contributors) quíenes han participado en este proyecto. 
-
-## Licencia 📄
-
-Este proyecto está bajo la Licencia (Tu Licencia) - mira el archivo [LICENSE.md](LICENSE.md) para detalles
-
-## Expresiones de Gratitud 🎁
-
-* Comenta a otros sobre este proyecto 📢
-* Invita una cerveza 🍺 o un café ☕ a alguien del equipo. 
-* Da las gracias públicamente 🤓.
-* etc.
