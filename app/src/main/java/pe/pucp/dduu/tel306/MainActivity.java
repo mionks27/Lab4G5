@@ -24,4 +24,14 @@ public class MainActivity extends AppCompatActivity {
         fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
     }
+
+    public void agregarRegisterFragment(View view){
+        RegisterFragment registerFragment = RegisterFragment.newInstance();
+        FragmentManager supportFragmentManager = getSupportFragmentManager();
+
+        FragmentTransaction fragmentTransaction = supportFragmentManager.beginTransaction();
+        fragmentTransaction.add(R.id.principalFragmentContainer,registerFragment);
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.commit();
+    }
 }

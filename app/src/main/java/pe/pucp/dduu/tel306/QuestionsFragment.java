@@ -14,19 +14,14 @@ public class QuestionsFragment extends Fragment {
     public QuestionsFragment() {
         // Required empty public constructor
     }
-
-    public static QuestionsFragment newInstance(String param1, String param2) {
+    public static QuestionsFragment newInstance() {
         QuestionsFragment fragment = new QuestionsFragment();
         return fragment;
     }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-        }
     }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
