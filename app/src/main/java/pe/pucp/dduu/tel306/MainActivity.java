@@ -43,7 +43,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-<<<<<<< HEAD
         try(FileInputStream fileInputStream = openFileInput("archivo.json");
         ) {
             //JULIO SI INICIA Y EL ARCHIVO YA ESTA
