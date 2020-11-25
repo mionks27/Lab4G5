@@ -45,8 +45,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         try(FileInputStream fileInputStream = openFileInput("archivo.json");
         ) {
-            //JULIO SI INICIA Y EL ARCHIVO YA ESTA
-            //GAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+            Intent intent = new Intent(MainActivity.this, QuestionsActivity.class);
+            startActivity(intent);
+
             //ESTO TE PUEDE SERVIR
             //String id = obtenerID();
 
@@ -108,9 +110,8 @@ public class MainActivity extends AppCompatActivity {
             fragmentTransaction.commit();
         }
         Log.d("infoApp"," YA HAY ARCHIVO ");
-        //JULIO SI SE LOGEA BIEN:
-        //GAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        //ESTO TE PUEDE SERVIR
+        Intent intent = new Intent(MainActivity.this, QuestionsActivity.class);
+        startActivity(intent);//ESTO TE PUEDE SERVIR
         //String id = obtenerID();
 
 
