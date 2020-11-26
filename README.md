@@ -50,7 +50,11 @@ You can easily register, we use some APIs to get and put information that will b
 
 _If you find some bugs or security mistakes, please notify us by sending an e-mail to a20201010@pucp.edu.pe_
 
+### Keep this in mind BEFORE STARTING ⌨
 
+_There are few things to avoid doing during your experience while running the project._
+_After you register/login and are answering a question, select one random option and then select again the option your want so it will work. If you try to select an option, the first time won't work. _
+_Do not use the "back" button from your device. I mean, just use the buttons that are on the project to navigate. _
 ## Build with 🛠️
 
 _Here are some of the fundamentals used in this project_
