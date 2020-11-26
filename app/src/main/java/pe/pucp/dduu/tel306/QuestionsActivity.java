@@ -65,5 +65,10 @@ public class QuestionsActivity extends AppCompatActivity {
             requestQueue.add(stringRequest);
     }
 
+    public void cerrarSesion(View view){
+        QuestionsActivity.this.deleteFile("archivo.json");
+        Intent intent = new Intent(QuestionsActivity.this, MainActivity.class);
+        startActivity(intent);
+    }
 
 }

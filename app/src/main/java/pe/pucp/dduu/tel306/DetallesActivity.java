@@ -255,4 +255,11 @@ public class DetallesActivity extends AppCompatActivity {
         requestQueue.add(stringRequest);
     }
 
+
+    public void cerrarSesion(View view){
+        DetallesActivity.this.deleteFile("archivo.json");
+        Intent intent = new Intent(DetallesActivity.this, MainActivity.class);
+        startActivity(intent);
+    }
+
 }
