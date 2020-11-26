@@ -8,6 +8,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,6 +30,8 @@ import java.io.FileReader;
 import java.io.IOException;
 
 import pe.pucp.dduu.tel306.Entity.EstadisticasDto;
+import pe.pucp.dduu.tel306.Entity.Preguntas;
+import pe.pucp.dduu.tel306.Entity.Respuestas;
 import pe.pucp.dduu.tel306.Entity.RespuestasAdapter;
 
 public class DetallesActivity extends AppCompatActivity {
@@ -56,13 +60,16 @@ public class DetallesActivity extends AppCompatActivity {
                         Log.d("info",response);
                         Gson gson = new Gson();
                         boolean aaa = gson.fromJson(response,boolean.class);
+                        Log.d("aaaaaaaaa", aaa + "    afaffsfsggsgsdggs");
                         if(aaa){
                             View fragmentAlternative = findViewById(R.id.fragmentAlternativa);
                             fragmentAlternative.setVisibility(View.GONE);
                             obtenerEstadistica(idQuestion);
                         }else{
-                            View fragmentEstadistica = findViewById(R.id.fragmentAlternativa);
+                            View fragmentEstadistica = findViewById(R.id.fragmentEstadistica);
                             fragmentEstadistica.setVisibility(View.GONE);
+                            obtenerAlternativas(idQuestion);
+
                         }
                     }
                 },
@@ -111,28 +118,51 @@ public class DetallesActivity extends AppCompatActivity {
             while ((line = bufferedReader.readLine())!=null){
                 try {
                     JSONObject objres = new JSONObject(line);
-                    Log.d("infoLine","ID : " + objres.get("id").toString());
-                    Log.d("infoLine","NAME : " + objres.get("name").toString());
-                    Log.d("infoLine","EMAIL : " + objres.get("email").toString());
-                    Log.d("infoLine","PASSWORD : " + objres.get("password").toString());
-                    Log.d("infoLine","TOKEN : " + objres.get("token").toString());
-                    Log.d("infoLine","CREATEDAT : " + objres.get("createdAt").toString());
-                    Log.d("infoLine","UPDATEDAT : " + objres.get("updatedAt").toString());
-                    Log.d("infoLine","QUESTIONS : " + objres.get("questions").toString());
-
                     id = objres.get("id").toString();
                 } catch (JSONException e) {
                     Toast.makeText(getApplicationContext(),"Server Error",Toast.LENGTH_LONG).show();
                     Log.d("infoLine","F");
                     Log.d("infoApp",line);
                 }
-
             }
         } catch (IOException e) {
             e.printStackTrace();
             Log.d("infoLine","NO EXISTE EL ARCHIVO");
         }
         return id;
+    }
+
+    public void obtenerAlternativas(String id){
+            RequestQueue requestQueue = Volley.newRequestQueue(this);
+            String url = "http://34.236.191.118:3000/api/v1/questions/"+ id;
+
+            StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
+                    new Response.Listener<String>() {
+                        @Override
+                        public void onResponse(String response) {
+                            Log.d("info",response);
+
+                            Gson gson = new Gson();
+                            Preguntas preguntas = gson.fromJson(response, Preguntas.class);
+                            View alterFragment = findViewById(R.id.fragmentAlternativa);
+                            TextView textView = alterFragment.findViewById(R.id.textViewAlt);
+                            textView.setText(preguntas.getQuestionText());
+                            ArrayAdapter<Respuestas> adapter = new ArrayAdapter<>(DetallesActivity.this, android.R.layout.simple_spinner_dropdown_item,
+                                    preguntas.getAnswers());
+                            Spinner spinner = alterFragment.findViewById(R.id.spinnerAlternativas);
+                            spinner.setAdapter(adapter);
+
+                        }
+                    },
+                    new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+
+                        }
+                    });
+
+            requestQueue.add(stringRequest);
+
     }
 
 }
