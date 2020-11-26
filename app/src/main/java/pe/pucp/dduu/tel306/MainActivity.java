@@ -45,9 +45,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         try(FileInputStream fileInputStream = openFileInput("archivo.json");
         ) {
-
             Intent intent = new Intent(MainActivity.this, QuestionsActivity.class);
             startActivity(intent);
+            Log.d("infoApp","YA ESTAS LOGEADO");
+            Log.d("infoApp","ID : " + obtenerDato("id"));
 
             //ESTO TE PUEDE SERVIR
             //String id = obtenerID();
@@ -109,11 +110,11 @@ public class MainActivity extends AppCompatActivity {
             fragmentTransaction.remove(loginFragment);
             fragmentTransaction.commit();
         }
-        Log.d("infoApp"," YA HAY ARCHIVO ");
+        Log.d("infoApp","YA ESTAS LOGEADO");
         Intent intent = new Intent(MainActivity.this, QuestionsActivity.class);
         startActivity(intent);//ESTO TE PUEDE SERVIR
         //String id = obtenerID();
-
+        //Log.d("infoApp","ID : " + obtenerID("name"));
 
     }
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -128,9 +129,9 @@ public class MainActivity extends AppCompatActivity {
         //String password = "321";
         //Log.d("infoApp","infoApp : " + email);
         //Log.d("infoApp","infoApp : " + password);
-        String data = "{\"name\":\"" + name + "\",\"email\":\"" + email + "\",\"password\":\"" + password + "\"}";
+        //String data = "{\"name\":\"" + name + "\",\"email\":\"" + email + "\",\"password\":\"" + password + "\"}";
         //Log.d("infoApp"," JSON LOGIN : " + data);
-        SubmitRegister(data);
+        SubmitRegister(name,email,password);
     }
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //CON ESTO SE MUESTRA EL FRAGMENT DE LOGIN
@@ -211,8 +212,9 @@ public class MainActivity extends AppCompatActivity {
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     private RequestQueue requestQueueRegister;
-    private void SubmitRegister(String data)
+    private void SubmitRegister(String name, String email, String password)
     {
+        String data = "{\"name\":\"" + name + "\",\"email\":\"" + email + "\",\"password\":\"" + password + "\"}";
         final String savedata= data;
         String URL="http://34.236.191.118:3000/api/v1/users/new";
 
@@ -221,9 +223,29 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onResponse(String response) {
                 if(response.equalsIgnoreCase("true")){
-                    Toast.makeText(getApplicationContext(),"Usuario Registrado Correctamente ",Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(),"USUARIO REGISTRADO CORRECTAMENTE",Toast.LENGTH_LONG).show();
+                    Log.d("infoApp","YA ESTAS LOGEADO");
+                    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                    String data = "{\"email\": \""+ email +"\",\"password\": \"" + password + "\"}";
+                    Log.d("infoApp"," JSON LOGIN : " + data);
+                    SubmitLogin(data);
+                    FragmentManager supportFragmentManager = getSupportFragmentManager();
+                    //AHORA BUSCAMOS EL FRAGMENTO SI REALMENTE EXISTE
+                    RegisterFragment registerFragment = (RegisterFragment) supportFragmentManager.findFragmentById(R.id.principalFragmentContainer);
+                    //SI LO ENCUENTRA EL blankFragment ES DIFERENTE DE NULO, ES DECIR QUE EL FRAGMENTO YA ESTA AHI, POR LO TANTO HAY QUE BORRARLO
+                    if (registerFragment != null){
+                        //QUE BORRE EL FRAGMENTO
+                        FragmentTransaction fragmentTransaction = supportFragmentManager.beginTransaction();
+                        fragmentTransaction.remove(registerFragment);
+                        fragmentTransaction.commit();
+                    }
+                    Log.d("infoApp","YA ESTAS LOGEADO");
+                    ///////////////////
+                    //GAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+                    Intent intent = new Intent(MainActivity.this, QuestionsActivity.class);
+                    startActivity(intent);
                 }else if(response.equalsIgnoreCase("false")){
-                    Toast.makeText(getApplicationContext(),"Este Usuario Ya Se Registró Anteriormente,PASAR AL LOGIN POR FAVOR",Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(),"Este Email NO ESTÁ DISPONIBLE",Toast.LENGTH_LONG).show();
                 }
             }
         }, new Response.ErrorListener() {
@@ -251,7 +273,7 @@ public class MainActivity extends AppCompatActivity {
         requestQueueRegister.add(stringRequest);
     }
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    public String obtenerID(){
+    public String obtenerDato(String nom){
         String id = null;
         try(FileInputStream fileInputStream = openFileInput("archivo.json");
             FileReader fileReader = new FileReader(fileInputStream.getFD());// FileReader lee caracter, no es muy practico asi q lo complmentamos con Buffer
@@ -269,13 +291,14 @@ public class MainActivity extends AppCompatActivity {
                     Log.d("infoLine","UPDATEDAT : " + objres.get("updatedAt").toString());
                     Log.d("infoLine","QUESTIONS : " + objres.get("questions").toString());
 
-                    id = objres.get("id").toString();
+                    //String nom = "name";
+
+                    id = objres.get(nom).toString();
                 } catch (JSONException e) {
                     Toast.makeText(getApplicationContext(),"Server Error",Toast.LENGTH_LONG).show();
                     Log.d("infoLine","F");
                     Log.d("infoApp",line);
                 }
-
             }
         } catch (IOException e) {
             e.printStackTrace();
