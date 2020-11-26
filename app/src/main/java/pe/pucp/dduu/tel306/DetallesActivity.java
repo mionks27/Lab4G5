@@ -8,11 +8,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -28,6 +31,7 @@ import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 
 import pe.pucp.dduu.tel306.Entity.EstadisticasDto;
 import pe.pucp.dduu.tel306.Entity.Preguntas;
@@ -163,6 +167,92 @@ public class DetallesActivity extends AppCompatActivity {
 
             requestQueue.add(stringRequest);
 
+    }
+
+    public void responderPregunta(View view){
+
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        Intent intent = getIntent();
+        String id = String.valueOf(intent.getIntExtra("id",0));
+        String url = "http://34.236.191.118:3000/api/v1/questions/"+ id;
+
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+
+                        Gson gson = new Gson();
+                        Preguntas preguntas = gson.fromJson(response, Preguntas.class);
+                        String idUser = obtenerID();
+                        Spinner spinner = findViewById(R.id.spinnerAlternativas);
+                        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                            @Override
+                            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                                int po = position-1;
+                                String data = "{\"iduser\":\"" + idUser  + "\",\"idanswer\":\"" + preguntas.getAnswers()[po].getId() + "\"}";
+                                Log.d("infoApp"," JSON LOGIN : " + data);
+                                submitPregunta(data,preguntas.getId());
+                            }
+
+                            @Override
+                            public void onNothingSelected(AdapterView<?> parent) {
+
+                            }
+
+                        });
+
+
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+
+                    }
+                });
+
+        requestQueue.add(stringRequest);
+
+    }
+
+
+    public void submitPregunta(String data, int idPre){
+        final String savedata= data;
+        String URL="http://34.236.191.118:3000/api/v1/questions/"+ idPre +"/answer";
+
+         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                if(response.equalsIgnoreCase("true")){
+                    Intent intent = new Intent(DetallesActivity.this, QuestionsActivity.class);
+                    intent.putExtra("msg","Pregunta Respondida");
+                    startActivity(intent);
+                }else if(response.equalsIgnoreCase("false")){
+                    Toast.makeText(getApplicationContext(),"GG",Toast.LENGTH_LONG).show();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+            }
+        }) {
+            @Override
+            public String getBodyContentType() {
+                return "application/json; charset=utf-8";
+            }
+            @Override
+            public byte[] getBody() throws AuthFailureError {
+                try {
+                    return savedata == null ? null : savedata.getBytes("utf-8");
+                } catch (UnsupportedEncodingException uee) {
+                    //Log.d("Unsupported Encoding while trying to get the bytes", data);
+                    Log.d("infoApp","ABC");
+                    return null;
+                }
+            }
+        };
+        requestQueue.add(stringRequest);
     }
 
 }

@@ -25,6 +25,7 @@
             android:id="@+id/buttonResponder"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:onClick="responderPregunta"
             android:text="Responder"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
